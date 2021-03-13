@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SeaBattle.Application.Contracts\SeaBattle.Application.Contracts.csproj" />
+    <ProjectReference Include="..\SeaBattle.Common\SeaBattle.Common.csproj" />
+    <ProjectReference Include="..\SeaBattle.DataAccess.Contracts\SeaBattle.DataAccess.Contracts.csproj" />
+    <ProjectReference Include="..\SeaBattle.Domain\SeaBattle.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.5.2" />
+  </ItemGroup>
+
+</Project>
