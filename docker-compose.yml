@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+  sea-battle:
+    image: seabattle
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    ports:
+      - 20270:20270
+    environment:
+      StorageConfiguration__UseMemoryStorage: "false"
+      ConnectionStrings__Postgre: "Server=postgres;Database=game;password=root;user id=root;Port=5432;Integrated Security=True"
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: game
+    volumes:
+      - ./src/SeaBattle.DataAccess.Postgre/SQL/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  pgAdmin:
+    image: dpage/pgadmin4
+    container_name: pgAdmin
+    ports:
+      - 8000:80
+    tty: true
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
