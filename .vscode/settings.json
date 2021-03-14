@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "**/*.*crunch*": true,
+        "**/*Crunch*": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/*.csproj.user": true
+    },
+    "omnisharp.defaultLaunchSolution": "./src/SeaBattle.sln",
+    "dotnet-test-explorer.autoWatch": true,
+    "dotnet-test-explorer.testProjectPath": "./src",
+    "dotnet-test-explorer.runInParallel": true,
+    "dotnet-test-explorer.enableTelemetry": false,
+    "dotnet-test-explorer.autoExpandTree": true,
+    "testing.automaticallyOpenPeekViewDuringAutoRun": true
+}

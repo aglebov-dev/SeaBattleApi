@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "API Memory", 
+            "presentation": {
+                "hidden": true
+            },
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/SeaBattle.Api/bin/Debug/netcoreapp3.1/SeaBattle.Api.dll",
+            "args": [],
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "StorageConfiguration__UseMemoryStorage": "true"
+            },
+            "cwd": "${workspaceFolder}/src",
+            "stopAtEntry": false,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "API",
+            "preLaunchTask": "build",
+            "configurations": [
+                "API Memory"
+            ]
+        }
+    }
+}
