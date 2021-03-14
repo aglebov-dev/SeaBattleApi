@@ -1,4 +1,4 @@
-﻿namespace SeaBattle.Application.Abstract
+﻿namespace SeaBattle.Common.DataValidation
 {
     public interface IValidationService
     {

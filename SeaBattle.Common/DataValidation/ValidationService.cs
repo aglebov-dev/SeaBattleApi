@@ -1,9 +1,8 @@
-﻿using SeaBattle.Application.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SeaBattle.Application.InternalServices
+namespace SeaBattle.Common.DataValidation
 {
     public class ValidationService : IValidationService
     {
@@ -21,6 +20,7 @@ namespace SeaBattle.Application.InternalServices
                 .Select(v => v.Validate(model))
                 .Where(r => !r.Success)
                 .SelectMany(r => r.Errors)
+                .Distinct()
                 .ToArray();
 
             return new ValidationData(!(errors.Length > 0), errors);

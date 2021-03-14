@@ -10,7 +10,7 @@ using SeaBattle.DataAccess.Postgre;
 namespace SeaBattle.DataAccess.Postgre.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    [Migration("20210313113221_Init")]
+    [Migration("20210314093135_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -56,7 +56,7 @@ namespace SeaBattle.Application
 
             await ThrowIfShotCanNotAdded(shot, game);
 
-            ShipDomainModel ship = await GetKnockedShip(game, shot);
+            ShipDomainModel ship = await TryKnockShip(game, shot);
 
             await _gameStateRepository.AddShot(game, shot, ship);
             
@@ -66,7 +66,9 @@ namespace SeaBattle.Application
                 await _gameStateRepository.EndGame(game);
             }
 
-            return _modelMapper.CreateShotResult(ship?.With(shot), stats);
+            return ship is null
+                ? _modelMapper.CreateShotResult(stats)
+                : _modelMapper.CreateShotResult(ship.With(shot), stats);
         }
 
         public async Task FinishGame()
@@ -84,7 +86,7 @@ namespace SeaBattle.Application
             return result;
         }
 
-        private Task<ShipDomainModel> GetKnockedShip(GameDomainModel game, ShotDomainModel shot)
+        private Task<ShipDomainModel> TryKnockShip(GameDomainModel game, ShotDomainModel shot)
         {
             SearchShipCriteria criteria = new SearchShipCriteria(game, shot.Point);
 

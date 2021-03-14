@@ -14,6 +14,8 @@ namespace SeaBattle.Domain
 
         public GameDomainModel(long id, int size, bool init, bool ended)
         {
+            // TODO check that size in not negative
+            // TODO check that ended game is init
             Id = id;
             Size = size;
             Init = init;
@@ -30,7 +32,7 @@ namespace SeaBattle.Domain
             var hash = new HashSet<(int x, int y)>();
             foreach (ShipDomainModel ship in ships ?? Enumerable.Empty<ShipDomainModel>())
             {
-                if (!DoesContainsPoint(ship.Start) || !DoesContainsPoint(ship.End))
+                if (!(DoesContainsPoint(ship.Start) && DoesContainsPoint(ship.End)))
                 {
                     throw new DataValidationException("Incorrect data.");
                 }

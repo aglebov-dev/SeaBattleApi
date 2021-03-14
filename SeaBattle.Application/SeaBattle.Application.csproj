@@ -11,8 +11,4 @@
     <ProjectReference Include="..\SeaBattle.Domain\SeaBattle.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="9.5.2" />
-  </ItemGroup>
-
 </Project>

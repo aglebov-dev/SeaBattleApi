@@ -27,6 +27,7 @@ namespace SeaBattle.Api.Infrastructure.ExceptionHandlers
             {
                 message = string.Join(Environment.NewLine, ex.Errors);
             }
+
             ErrorResponse response = new ErrorResponse
             {
                 Message = message

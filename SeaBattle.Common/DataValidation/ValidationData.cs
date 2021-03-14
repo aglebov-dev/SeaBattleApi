@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SeaBattle.Application.Abstract
+namespace SeaBattle.Common.DataValidation
 {
     public class ValidationData
     {

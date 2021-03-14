@@ -6,6 +6,7 @@ namespace SeaBattle.Application.Abstract
     public interface IModelsMapper
     {
         GameStatsModel Map(GameStatsDomainModel stats);
+        ShotResultModel CreateShotResult(GameStatsDomainModel stats);
         ShotResultModel CreateShotResult(ShipDomainModel ship, GameStatsDomainModel stats);
     }
 }

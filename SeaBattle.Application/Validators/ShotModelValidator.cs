@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using SeaBattle.Application.Abstract;
 using SeaBattle.Application.Contracts.Models;
+using SeaBattle.Common.DataValidation;
 
 namespace SeaBattle.Application.Validators
 {

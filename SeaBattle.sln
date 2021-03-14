@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeaBattle.Application.Depen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{C42B36FB-13FF-4284-AEAA-97BAADC0698B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{091DAA72-1B5B-46A8-9092-7445658F68B7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{091DAA72-1B5B-46A8-9092-7445658F68B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeaBattle.Domain", "SeaBattle.Domain\SeaBattle.Domain.csproj", "{F1D24A61-C285-4CBA-B171-A35751D40A02}"
 EndProject
@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeaBattle.DataAccess.Postgr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{460F67B2-659E-4970-8BC0-E691A7B1871A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaBattle.Tests", "SeaBattle.Tests\SeaBattle.Tests.csproj", "{119E1607-0223-4F04-B4EA-312AD29F9F52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeaBattle.Tests", "SeaBattle.Tests\SeaBattle.Tests.csproj", "{119E1607-0223-4F04-B4EA-312AD29F9F52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

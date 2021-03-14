@@ -1,8 +1,8 @@
-﻿using SeaBattle.Application.Abstract;
-using SeaBattle.Application.Contracts;
+﻿using SeaBattle.Application.Contracts;
 using SeaBattle.Application.Contracts.Models;
-using SeaBattle.Application.Extensions;
+using SeaBattle.Common.DataValidation;
 using SeaBattle.Common.Extensions;
+using SeaBattle.Domain.Exceptions;
 using System.Threading.Tasks;
 
 namespace SeaBattle.Application
@@ -19,21 +19,21 @@ namespace SeaBattle.Application
         }
         public Task AddShips(ShipsCreationModel creationModel)
         {
-            _validationService.Validate(creationModel).ThrowIfHasErrors();
+            ThrowIfHasErrors(_validationService.Validate(creationModel));
 
             return _service.AddShips(creationModel);
         }
 
         public Task CreateGame(GameCreationModel creationModel)
         {
-            _validationService.Validate(creationModel).ThrowIfHasErrors();
+            ThrowIfHasErrors(_validationService.Validate(creationModel));
 
             return _service.CreateGame(creationModel);
 
         }
         public Task<ShotResultModel> Shot(ShotModel shotModel)
         {
-            _validationService.Validate(shotModel).ThrowIfHasErrors();
+            ThrowIfHasErrors(_validationService.Validate(shotModel));
 
             return _service.Shot(shotModel);
         }
@@ -46,6 +46,14 @@ namespace SeaBattle.Application
         public Task<GameStatsModel> GetGameStats()
         {
             return _service.GetGameStats();
+        }
+
+        private void ThrowIfHasErrors(ValidationData result)
+        {
+            if (!result.Success)
+            {
+                throw new DataValidationException(result.Errors);
+            }
         }
     }
 }

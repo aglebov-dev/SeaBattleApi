@@ -3,7 +3,7 @@ using FluentValidation.Results;
 using System;
 using System.Linq;
 
-namespace SeaBattle.Application.Abstract
+namespace SeaBattle.Common.DataValidation
 {
     public abstract class BaseValidator<TModel> : AbstractValidator<TModel>, IModelValidator
     {

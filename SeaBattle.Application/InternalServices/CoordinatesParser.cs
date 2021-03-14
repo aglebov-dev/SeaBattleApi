@@ -13,9 +13,16 @@ namespace SeaBattle.Application.InternalServices
     public class CoordinatesParser : ICoordinatesParser
     {
         private static LetterNumbersConverter converter = new LetterNumbersConverter();
-        private static Regex shipCoordinatesRegex = new Regex(@"^\d+\w+\s+\d+\w+$", RegexOptions.Compiled);
-        private static Regex pointRegex = new Regex(@"^(\d+)(\w+)$", RegexOptions.Compiled);
+        private static Regex shipCoordinatesRegex = new Regex(@"^\d+[A-Za-z]+\s+\d+[A-Za-z]+$", RegexOptions.Compiled);
+        private static Regex pointRegex = new Regex(@"^(\d+)([A-Za-z]+)$", RegexOptions.Compiled);
         private static Regex spaceRegex = new Regex(@"\s+", RegexOptions.Compiled);
+
+        private readonly DataValidationException _defaultException;
+
+        public CoordinatesParser()
+        {
+            _defaultException = new DataValidationException("Incorect coordinates.");
+        }
 
         public IReadOnlyCollection<ShipDomainModel> ParseShipsCoordinates(string text)
         {
@@ -26,7 +33,7 @@ namespace SeaBattle.Application.InternalServices
 
             if (!ValidateShipsCoordinates(text))
             {
-                throw new DataValidationException("Incorect coordinates.");
+                throw _defaultException;
             }
 
             List<ShipDomainModel> results = new List<ShipDomainModel>();
@@ -55,7 +62,7 @@ namespace SeaBattle.Application.InternalServices
 
             if (!ValidateCoordinate(text))
             {
-                throw new DataValidationException("Incorect coordinate.");
+                throw _defaultException;
             }
 
             (int x, int y) = GetPoint(text);

@@ -1,7 +1,8 @@
 ﻿using SeaBattle.Common.Extensions;
 using SeaBattle.Common.Types;
+using SeaBattle.Domain;
 
-namespace SeaBattle.Domain
+namespace SeaBattle.DataAccess.Contracts
 {
     public class SearchShipCriteria
     {

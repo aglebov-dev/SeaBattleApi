@@ -5,6 +5,7 @@ using SeaBattle.Application.Contracts;
 using SeaBattle.Application.Contracts.Configurations;
 using SeaBattle.Application.InternalServices;
 using SeaBattle.Application.Validators;
+using SeaBattle.Common.DataValidation;
 using SeaBattle.Common.Extensions;
 using SeaBattle.DataAccess.Memory;
 using SeaBattle.DataAccess.Postgre;
@@ -30,7 +31,7 @@ namespace SeaBattle.Application.Dependencies
                 .AddScoped<ISeeBattleGameService, SeaBattleGameService>()
                 .AddSingleton<ICoordinatesParser, CoordinatesParser>();
 
-            var useMemoryStorage = configuration
+            StorageConfiguration useMemoryStorage = configuration
                 .GetSection(nameof(StorageConfiguration))
                 .Get<StorageConfiguration>();
 

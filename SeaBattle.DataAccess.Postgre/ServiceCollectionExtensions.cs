@@ -32,11 +32,7 @@ namespace SeaBattle.DataAccess.Postgre
 
         private static void OptionsConfiguration(NpgsqlDbContextOptionsBuilder builder)
         {
-            string assemblyName = typeof(GameDbContext).Namespace;
-
             builder.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
-            builder.MigrationsHistoryTable("__ef_migrations_history", StorageConstants.Schema);
-            builder.MigrationsAssembly(assemblyName);
         }
     }
 }

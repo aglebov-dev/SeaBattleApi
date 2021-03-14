@@ -7,14 +7,19 @@ namespace SeaBattle.Application.InternalServices
 {
     public class ModelsMapper : IModelsMapper
     {
-        public ShotResultModel CreateShotResult(ShipDomainModel ship, GameStatsDomainModel stats)
+        public ShotResultModel CreateShotResult(GameStatsDomainModel stats)
         {
             AssertExtensions.NotNull(stats, nameof(stats));
 
-            var destroed = ship != null && ship.Health == 0;
-            var knocked = ship != null;
+            return new ShotResultModel(false, false, stats.IsEnded);
+        }
 
-            return new ShotResultModel(destroed, knocked, stats.IsEnded);
+        public ShotResultModel CreateShotResult(ShipDomainModel ship, GameStatsDomainModel stats)
+        {
+            AssertExtensions.NotNull(ship, nameof(ship));
+            AssertExtensions.NotNull(stats, nameof(stats));
+
+            return new ShotResultModel(ship.Health == 0, true, stats.IsEnded);
         }
 
         public GameStatsModel Map(GameStatsDomainModel stats)

@@ -16,4 +16,8 @@
     <ProjectReference Include="..\SeaBattle.DataAccess.Contracts\SeaBattle.DataAccess.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

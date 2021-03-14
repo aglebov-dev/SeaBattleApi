@@ -15,7 +15,7 @@ using Xunit;
 
 namespace SeaBattle.Tests
 {
-    public class ControllersTestHelper
+    public class ControllersTests
     {
         private class TestWebHostEnvironment : IWebHostEnvironment
         {
@@ -30,7 +30,7 @@ namespace SeaBattle.Tests
         private readonly IServiceCollection _serviceCollection;
         private readonly ServiceProvider _serviceProvider;
 
-        public ControllersTestHelper()
+        public ControllersTests()
         {
             var testConfiguration = new Dictionary<string, string>
             {

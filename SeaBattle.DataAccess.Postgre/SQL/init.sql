@@ -1,7 +1,10 @@
-﻿CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+﻿-- TODO Add indexes for foign keys and coordinates
+
+CREATE SCHEMA IF NOT EXISTS private;
+CREATE TABLE IF NOT EXISTS private.__ef_migrations_history (
     "MigrationId" character varying(150) NOT NULL,
     "ProductVersion" character varying(32) NOT NULL,
-    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+    CONSTRAINT "PK___ef_migrations_history" PRIMARY KEY ("MigrationId")
 );
 
 START TRANSACTION;
@@ -45,8 +48,7 @@ CREATE INDEX "IX_shots_game_id" ON private.shots (game_id);
 
 CREATE INDEX "IX_shots_ship_id" ON private.shots (ship_id);
 
-INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
-VALUES ('20210313113221_Init', '5.0.4');
+INSERT INTO private.__ef_migrations_history ("MigrationId", "ProductVersion")
+VALUES ('20210314093135_Init', '5.0.4');
 
 COMMIT;
-

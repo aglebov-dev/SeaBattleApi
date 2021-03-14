@@ -59,7 +59,7 @@ namespace SeaBattle.Tests
         [Theory]
         [InlineData(111, 5)]
         [InlineData(1, 555)]
-        public void CanAddShips_WhenShipsContainIncorrectData_ThrowExption(int x, int y)
+        public void CanAddShips_WhenShipsOutOfBounds_ThrowExption(int x, int y)
         {
             var model = new GameDomainModel(id: 7, size: 10, init: false, ended: false);
             var ships = new[]
@@ -70,6 +70,27 @@ namespace SeaBattle.Tests
             Assert.Throws<DataValidationException>(() => model.CanAddShips(ships));
         }
 
+        [Fact]
+        public void CanAddShips_WhenGameAlreadyInit_ReturnFalse()
+        {
+            var model = new GameDomainModel(id: 7, size: 10, init: true, ended: false);
+            var ships = new ShipDomainModel[] { };
+
+            var result = model.CanAddShips(ships);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void CanAddShips_WhenGameAlreadyEnded_ReturnFalse()
+        {
+            var model = new GameDomainModel(id: 7, size: 10, init: false, ended: true);
+            var ships = new ShipDomainModel[] { };
+
+            var result = model.CanAddShips(ships);
+
+            Assert.False(result);
+        }
 
         private ShipDomainModel CreateShip(int x1, int y1, int x2, int y2)
         {
