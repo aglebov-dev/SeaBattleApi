@@ -46,6 +46,10 @@ Content-Type:  application/json
 7. You are not allowed to shoot outside the field
 8. You are not allowed to shoot if the game is over.
 
+## API
+
+After starting the application, the `api` specification is available at the address `http://localhost:20270/swagger`
+
 ## Examples of requests
 
 ### Create a new game
