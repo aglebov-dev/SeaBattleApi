@@ -11,13 +11,16 @@ namespace SeaBattle.Api
     {
         static void Main(string[] args)
         {
-            IHostBuilder host = Host
+            IHostBuilder hostBuilder = Host
                 .CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration(ConfigureAppConfiguration)
                 .ConfigureLogging(ConfigureLogging)
                 .ConfigureWebHostDefaults(ConfigureWebHost);
 
-            host.Build().Start();
+            using (IHost host = hostBuilder.Build())
+            {
+                host.Run();
+            }
         }
 
         private static void ConfigureAppConfiguration(HostBuilderContext context, IConfigurationBuilder config)
