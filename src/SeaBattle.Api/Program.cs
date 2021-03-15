@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using System;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace SeaBattle.Api
 {
@@ -25,16 +27,20 @@ namespace SeaBattle.Api
 
         private static void ConfigureAppConfiguration(HostBuilderContext context, IConfigurationBuilder config)
         {
+            IConfigurationSource[] jsonFilesSources = config.Sources.Where(source => source is JsonConfigurationSource).ToArray();
+            foreach (IConfigurationSource source in jsonFilesSources)
+            {
+                // remove all providers for json files so that later they can be rewritten below
+                config.Sources.Remove(source);
+            }
+            
             string path = context.HostingEnvironment.ContentRootPath;
             string environment = context.HostingEnvironment.EnvironmentName;
-            string[] args = Environment.GetCommandLineArgs();
 
             config
                 .SetBasePath(path)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
-                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: false)
-                .AddEnvironmentVariables()
-                .AddCommandLine(args);
+                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: false);
         }
 
         private static void ConfigureLogging(ILoggingBuilder builder)

@@ -14,7 +14,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development",
                 "StorageConfiguration__UseMemoryStorage": "true"
             },
-            "cwd": "${workspaceFolder}/src",
+            "cwd": "${workspaceFolder}/src/SeaBattle.Api",
             "stopAtEntry": false,
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
