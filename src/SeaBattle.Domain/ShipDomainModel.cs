@@ -23,9 +23,9 @@ namespace SeaBattle.Domain
             AssertExtensions.NotNull(shots, nameof(shots));
 
             Id     = id;
-            Start  = start.NotNull(nameof(start));
-            End    = end.NotNull(nameof(end));
-            Shots  = shots.NotNull(nameof(shots)).ToImmutableList();
+            Start  = start;
+            End    = end;
+            Shots  = shots.ToImmutableList();
             MaxHealth = (Math.Abs(start.X - end.X) + 1) * (Math.Abs(start.Y - end.Y) + 1);
             Health = GetHealth(shots);
         }
